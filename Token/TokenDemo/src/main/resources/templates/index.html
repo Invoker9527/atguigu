@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/jquery3.6.0.js"></script>
+    <script>
+        $(function () {
+            $("#btn").click(function () {
+                var userName = $("#userName").val();
+                var pwd = $("#pwd").val();
+                $.ajax({
+                    url: "http:localhost:8888/login",
+                    data: {
+                        "userName": userName,
+                        "pwd": pwd
+                    }, type: "post",
+                    dataType: "json",
+                    success: function (data) {
+                        if (data.code != 200) {
+                            location.href = "index.html"
+                        } else {
+                            localStorage.setItem("authorization", data.data);
+                            location.href = "main.html"
+                        }
+                    }
+                });
+            })
+        });
+    </script>
+</head>
+<body>
+*************跨域操作*************<br/><br/><br/>
+账号：<input type="text" name="userName" id="userName" size="20"><br/>
+密码：<input type="password" name="pwd" id="pwd" size="20">
+<input type="button" value="按钮测试" id="btn">
+</body>
+</html>

@@ -1,0 +1,24 @@
+server:
+  port: 8888
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/mybatis_plus?serverTimezone=UTC
+    username: root
+    password: 1234
+    type: com.zaxxer.hikari.HikariDataSource
+    ##mybatis的日志
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    #设置mybatisplus的全局配置
+  global-config:
+    db-config:
+      # 设置实体类所对应的表的统一前缀
+      table-prefix: t_
+      # 设置统一的主键生成策略(auto自动递增,不设置默认为none，雪花算法自动生成)
+      id-type: auto
+  type-aliases-package: com.atguigu.mybatis.bean
+
+maps: { "k1": "1","k2": "2","k3": "3" }
